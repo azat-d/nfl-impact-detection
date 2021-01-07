@@ -1,0 +1,27 @@
+_BASE_: "./Base-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+    NORM: "SyncBN"
+    STRIDE_IN_1X1: True
+  FPN:
+    NORM: "SyncBN"
+  ANCHOR_GENERATOR:
+    SIZES: [[16], [32], [64], [128], [256]]  # One size for each in feature map
+  ROI_HEADS:
+    NUM_CLASSES: 1
+  ROI_BOX_HEAD:
+    NORM: "SyncBN"
+DATASETS:
+  TRAIN: ["helmet_train_images", "helmet_train_frames"]
+  TEST: ["helmet_val_images", "helmet_val_frames"]
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.02
+  STEPS: (30000, 40000)
+  MAX_ITER: 45000
+TEST:
+  EVAL_PERIOD: 5000
+OUTPUT_DIR: "./helmet_detector"
