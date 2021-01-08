@@ -66,11 +66,12 @@ RUN cd /tmp && \
         av==8.0.2 \
         simplejson==3.17.2 \
         psutil==5.7.3 \
-        opencv-python-headless==4.4.0.46 \
         pandas==1.1.5 \
         scikit-learn==0.24.0rc1 && \
     pip3 install . && \
+    pip3 uninstall opencv-python && \
     cd / && \
     pip3 --no-cache-dir install \
+        opencv-python-headless==4.4.0.46 \
         timm==0.3.2 && \
     rm -rf /tmp/*
