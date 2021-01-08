@@ -1,4 +1,4 @@
-NFL_DATA_PATH: "/media/azat/Fast/datasets/kaggle/nfl-impact-detection"
-ARTIFACTS_PATH: "/kaggle/solution/artifacts"
-MODELS_PATH: "/kaggle/solution/models"
-HELMET_DETECTOR_CONFIG_PATH: "/kaggle/solution/configs/helmet_detector/faster_rcnn_R_50_FPN_1x_syncbn.yaml"
+NFL_DATA_PATH: "/kaggle/input/nfl-impact-detection"
+ARTIFACTS_PATH: "/kaggle/artifacts"
+MODELS_PATH: "/kaggle/models"
+OUTPUT_PATH: "/kaggle/output"
