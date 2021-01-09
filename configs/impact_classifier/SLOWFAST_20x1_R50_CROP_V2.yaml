@@ -82,5 +82,6 @@ NUM_GPUS: 4
 NUM_SHARDS: 1
 RNG_SEED: 0
 OUTPUT_DIR: "./impact_classifier"
+LOG_MODEL_INFO: False
 TENSORBOARD:
   ENABLE: True
