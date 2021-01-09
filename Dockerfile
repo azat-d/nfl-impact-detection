@@ -69,7 +69,7 @@ RUN cd /tmp && \
         pandas==1.1.5 \
         scikit-learn==0.24.0rc1 && \
     pip3 install . && \
-    pip3 uninstall opencv-python && \
+    pip3 uninstall -y opencv-python && \
     cd / && \
     pip3 --no-cache-dir install \
         opencv-python-headless==4.4.0.46 \

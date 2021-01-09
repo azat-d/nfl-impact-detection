@@ -37,10 +37,11 @@ class ColorAugmenter(object):
         prev_state = random.getstate()
         aug_imgs = []
         for img in imgs:
+            dtype = img.dtype
             random.setstate(prev_state)
             img = Image.fromarray(img.astype(np.uint8))
             img = self._rand_augment(img)
-            img = np.array(img).astype(img.dtype)
+            img = np.array(img).astype(dtype)
             aug_imgs.append(img)
         return aug_imgs
 

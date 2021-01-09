@@ -120,7 +120,7 @@ class TrainValMeter(object):
         if len(self.all_boxes) > 0:
             all_boxes = torch.cat(self.all_boxes, dim=0)
             all_areas = (all_boxes[:, 3] - all_boxes[:, 1]) * (all_boxes[:, 4] - all_boxes[:, 2])
-            mask = torch.ge(all_areas, self.cfg.NFL.MIN_BOX_AREA)
+            mask = torch.ge(all_areas, self.cfg.IMPACT_DATA.MIN_BOX_AREA)
             all_preds = all_preds[mask].numpy().flatten()
             all_labels = all_labels[mask].numpy().flatten()
         else:

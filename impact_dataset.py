@@ -18,7 +18,6 @@ from nfl_io import get_nfl_train_videos_split_path, get_nfl_val_videos_split_pat
 from nfl_io import get_nfl_rel_path_to_detections_path
 
 
-@DATASET_REGISTRY.register()
 class ImpactDataset(Dataset):
     def __init__(self, cfg, split):
         self.cfg = cfg
@@ -277,3 +276,6 @@ class ImpactDataset(Dataset):
         }
 
         return imgs, labels, idx, extra_data
+
+
+DATASET_REGISTRY._do_register("Impactdataset", ImpactDataset)
