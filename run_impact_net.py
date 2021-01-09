@@ -4,6 +4,7 @@ import slowfast.utils.checkpoint as cu
 from slowfast.config.defaults import get_cfg
 
 import impact_dataset
+import impact_crop_dataset
 import video_model_builder
 from impact_data_config import add_impact_data_config
 from train_impact_net import train
