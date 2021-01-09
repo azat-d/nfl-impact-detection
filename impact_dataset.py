@@ -85,7 +85,8 @@ class ImpactDataset(Dataset):
             video = os.path.dirname(rel_path)
             frame = int(os.path.basename(rel_path).split(".")[0])
             for _, _, _, _, label in impacts:
-                for i in range(frame - cfg.IMPACT_DATA.IMPACT_EXTENSION_DELTA, frame + cfg.IMPACT_DATA.IMPACT_EXTENSION_DELTA + 1):
+                for i in range(frame - cfg.IMPACT_DATA.IMPACT_EXTENSION_DELTA,
+                               frame + cfg.IMPACT_DATA.IMPACT_EXTENSION_DELTA + 1):
                     extended_rel_path = os.path.join(video, f"{i}.jpg")
                     if extended_rel_path in rel_path_to_label_to_bbox:
                         label_to_bbox = rel_path_to_label_to_bbox[extended_rel_path]

@@ -19,7 +19,6 @@ from nfl_io import get_nfl_train_videos_split_path, get_nfl_val_videos_split_pat
 from nfl_io import get_nfl_rel_path_to_detections_path
 
 
-@DATASET_REGISTRY.register()
 class ImpactCropDataset(Dataset):
     def __init__(self, cfg, split):
         self.cfg = cfg
@@ -108,7 +107,8 @@ class ImpactCropDataset(Dataset):
             video = os.path.dirname(rel_path)
             frame = int(os.path.basename(rel_path).split(".")[0])
             for _, _, _, _, label in impacts:
-                for i in range(frame - cfg.IMPACT_DATA.IMPACT_EXTENSION_DELTA, frame + cfg.IMPACT_DATA.IMPACT_EXTENSION_DELTA + 1):
+                for i in range(frame - cfg.IMPACT_DATA.IMPACT_EXTENSION_DELTA,
+                               frame + cfg.IMPACT_DATA.IMPACT_EXTENSION_DELTA + 1):
                     extended_rel_path = os.path.join(video, f"{i}.jpg")
                     if extended_rel_path in rel_path_to_label_to_bbox:
                         label_to_bbox = rel_path_to_label_to_bbox[extended_rel_path]
@@ -262,3 +262,6 @@ class ImpactCropDataset(Dataset):
         label = np.array([label], dtype=np.float32)
 
         return crops, label, idx, {}
+
+
+DATASET_REGISTRY._do_register("Impactcropdataset", ImpactCropDataset)

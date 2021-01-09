@@ -27,6 +27,11 @@ def get_nfl_models_path():
     return config["MODELS_PATH"]
 
 
+def get_nfl_output_path():
+    config = get_nfl_config()
+    return config["OUTPUT_PATH"]
+
+
 def get_nfl_frames_path():
     artifacts_path = get_nfl_artifacts_path()
     return os.path.join(artifacts_path, "frames")

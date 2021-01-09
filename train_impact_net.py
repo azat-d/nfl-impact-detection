@@ -5,6 +5,7 @@
 
 import numpy as np
 import random
+import os
 import pprint
 import torch
 from fvcore.nn.precise_bn import get_bn_modules, update_bn_stats
@@ -26,7 +27,7 @@ logger = logging.get_logger(__name__)
 
 
 def train_epoch(
-    train_loader, model, optimizer, train_meter, cur_epoch, cfg, writer=None
+        train_loader, model, optimizer, train_meter, cur_epoch, cfg, writer=None
 ):
     """
     Perform the video training for one epoch.
@@ -289,6 +290,10 @@ def train(cfg):
     logger.info("Train with config:")
     logger.info(pprint.pformat(cfg))
 
+    if du.is_master_proc():
+        with open(os.path.join(cfg.OUTPUT_DIR, "config.yaml"), "w") as f:
+            f.write(cfg.dump())
+
     # Build the video model and print model statistics.
     model = build_model(cfg)
     if du.is_master_proc() and cfg.LOG_MODEL_INFO:
@@ -315,7 +320,7 @@ def train(cfg):
 
     # set up writer for logging to Tensorboard format.
     if cfg.TENSORBOARD.ENABLE and du.is_master_proc(
-        cfg.NUM_GPUS * cfg.NUM_SHARDS
+            cfg.NUM_GPUS * cfg.NUM_SHARDS
     ):
         writer = tb.TensorboardWriter(cfg)
     else:
@@ -368,9 +373,9 @@ def train(cfg):
 
         # Compute precise BN stats.
         if (
-            (is_checkp_epoch or is_eval_epoch)
-            and cfg.BN.USE_PRECISE_STATS
-            and len(get_bn_modules(model)) > 0
+                (is_checkp_epoch or is_eval_epoch)
+                and cfg.BN.USE_PRECISE_STATS
+                and len(get_bn_modules(model)) > 0
         ):
             calculate_and_update_precise_bn(
                 precise_bn_loader,
