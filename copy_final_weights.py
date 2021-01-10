@@ -39,7 +39,8 @@ def copy_impact_model(model_src_root, dst_config_path, dst_weights_path):
                 checkpoints.append((checkpoint_rel_path, score))
 
     checkpoints = sorted(checkpoints, key=lambda item: item[1])
-    best_checkpoint_rel_path = checkpoints[-1][0]
+    best_checkpoint_rel_path, best_score = checkpoints[-1]
+    print(f"Checkpoint {best_checkpoint_rel_path} selected with score {best_score}")
 
     copy(os.path.join(model_src_root, IMPACT_MODEL_CONFIG_FILE_NAME), dst_config_path)
     copy(os.path.join(model_src_root, best_checkpoint_rel_path), dst_weights_path)
