@@ -1,4 +1,3 @@
 NFL_DATA_PATH: "/kaggle/input/nfl-impact-detection"
 ARTIFACTS_PATH: "/kaggle/artifacts"
 MODELS_PATH: "/kaggle/models"
-OUTPUT_PATH: "/kaggle/output"
