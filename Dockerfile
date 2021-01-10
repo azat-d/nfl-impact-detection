@@ -34,7 +34,7 @@ RUN rm /etc/apt/sources.list.d/cuda.list \
     cd /tmp && \
     git clone -b v0.8.2 https://github.com/pytorch/vision.git && \
     cd vision && \
-    python3 setup.py install && \
+    FORCE_CUDA=1 python3 setup.py install && \
     cd / && \
     apt-get clean && \
     apt-get autoremove && \
