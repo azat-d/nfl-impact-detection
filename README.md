@@ -92,16 +92,16 @@ Copy validation videos to a separate folder (~5 seconds)
 ```bash
 mkdir /kaggle/artifacts/val && for video in `cat /kaggle/artifacts/val_videos_split.txt`; do cp /kaggle/input/nfl-impact-detection/train/${video} /kaggle/artifacts/val; done
 ```
-Run the following command to get predictions in csv format
+Run the following command to get predictions in csv format (~3 hours)
 ```bash
 python3 predict_impacts.py --videos-root /kaggle/artifacts/val --output-csv-path /kaggle/artifacts/val_submission.csv
 ```
-Get the result on the validation set
+Get the result on the validation set (~5 seconds)
 ```bash
 python3 evaluate.py --csv-path /kaggle/artifacts/val_submission.csv
 ```
 ### Test
-To get predictions on the test set, run the following command
+To get predictions on the test set, run the following command (~40 minutes)
 ```bash
 python3 predict_impacts.py --videos-root /kaggle/input/nfl-impact-detection/test --output-csv-path /kaggle/output/submission.csv
 ```
