@@ -56,8 +56,8 @@ def iou(bbox1, bbox2):
         int: intersection-over-onion of bbox1, bbox2
     """
 
-    bbox1 = [float(x) for x in bbox1]
-    bbox2 = [float(x) for x in bbox2]
+    bbox1 = [float(x) for x in bbox1[:4]]
+    bbox2 = [float(x) for x in bbox2[:4]]
 
     (x0_1, y0_1, x1_1, y1_1) = bbox1
     (x0_2, y0_2, x1_2, y1_2) = bbox2
