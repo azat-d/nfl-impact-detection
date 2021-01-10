@@ -30,6 +30,7 @@ RUN rm /etc/apt/sources.list.d/cuda.list \
     cd /tmp && \
     git clone -b v1.7.1 --recursive https://github.com/pytorch/pytorch.git && \
     cd pytorch && \
+    export TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1 7.0+PTX 8.0" && \
     python3 setup.py install && \
     cd /tmp && \
     git clone -b v0.8.2 https://github.com/pytorch/vision.git && \
