@@ -110,4 +110,4 @@ python3 predict_impacts.py --videos-root /kaggle/input/nfl-impact-detection/test
 This file specifies the path to the train, test, model, and output directories.
 
 ##  Serialized copy of the trained model
-You can find the models that I used to generate the final submission in the `models` folder
+You can find the weights that I used to generate the final submission in the `models` folder
